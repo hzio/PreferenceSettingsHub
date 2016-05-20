@@ -1,2 +1,2 @@
-# PrefrenceSettingsHub
-Various of configuration files.
+# PreferenceSettingsHub
+Various of preference settings files.
