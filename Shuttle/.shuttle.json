@@ -1,0 +1,46 @@
+{
+	"_comments": [
+		"Valid terminals include: 'Terminal.app' or 'iTerm'",
+		"Hosts will also be read from your ~/.ssh/config or /etc/ssh_config file, if available",
+		"For more information on how to configure, please see http://fitztrev.github.io/shuttle/"
+	],
+	"terminal": "iTerm",
+	"launch_at_login": true,
+	"show_ssh_config_hosts": true,
+	"ssh_config_ignore_hosts": [],
+	"ssh_config_ignore_keywords": [],
+	"hosts": [
+		{
+			"name": "ZabbixServer",
+			"cmd": "ssh root@zabbix.dpm.im -p 10022"
+		},
+		{
+			"Personal": [
+				{
+					"name": "BobServerStation",
+					"cmd": "ssh root@192.168.10.123"
+				},
+				{
+					"name": "BobServerStation-vm1",
+					"cmd": "ssh root@192.168.10.124"
+				}
+			]
+		},
+		{
+			"Work": [
+				{
+					"name": "dev.example.net",
+					"cmd": "ssh username@dev.example.net -p 3000"
+				},
+				{
+					"name": "staging.example.net",
+					"cmd": "ssh username@staging.example.net -p 3000"
+				},
+				{
+					"name": "production.example.net",
+					"cmd": "ssh username@example.net -p 3000"
+				}
+			]
+		}
+	]
+}
