@@ -1,32 +1,21 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/BobZhao/.oh-my-zsh
+export ZSH=/Users/hunterzhao/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
-DEFAULT_USER="BobZhao"
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="bullet-train"
 
-# common
-alias ll='ls -l'
-alias la='ls -la'
-alias md='mkdir'
-alias tc='touch'
-alias grep='grep --color=auto'
-# git
-alias gcl="git clone"
-alias gk="git checkout"
-alias gf="git fetch"
-alias ga="git add"
-alias gc="git commit -a -m"
-alias gpl="git pull"
-alias gps="git push"
-alias gs="git status"
-alias gl="git log"
-alias gm="git merge"
-alias gd="git diff"
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -36,7 +25,7 @@ alias gd="git diff"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"gnoster"
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -70,14 +59,15 @@ alias gd="git diff"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump bundler osx)
+plugins=(
+  git autojump kubectl completion wd z web-search catimg urltools encode64 zsh-autosuggestions zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/bin:/usr/local/mysql/bin:/Users/BobZhao/develop/apache-maven-3.3.3/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/bin:/usr/local/mysql/bin:/Users/BobZhao/develop/apache-maven-3.3.3/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/bin:/usr/local/mysql/bin:/Users/BobZhao/develop/apache-maven-3.3.3/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -93,7 +83,29 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# common
+alias ll='ls -l'
+alias la='ls -la'
+alias md='mkdir'
+alias tc='touch'
+alias grep='grep --color=auto'
+# git
+alias gcl="git clone"
+alias gck="git checkout"
+alias gb="git branch"
+alias gf="git fetch"
+alias ga="git add"
+alias gc="git commit -a -m"
+alias gpl="git pull"
+alias gps="git push"
+alias gs="git status"
+alias gl="git log --graph --pretty=oneline --abbrev-commit"
+alias gm="git merge"
+alias gd="git diff"
+alias gr="git rm --cached"
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -103,4 +115,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/.bash_profile
+source ~/.bash_profile
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hunterzhao/develop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/hunterzhao/develop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/hunterzhao/develop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hunterzhao/develop/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+if [ $commands[kubectl] ]; then 
+	source <(kubectl completion zsh) 
+fi
+
+
